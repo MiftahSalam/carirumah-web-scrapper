@@ -766,3 +766,48 @@
         ]
     }
 ]
+
+{
+    "data": [
+        {
+            "latitude": -7.173881,
+            "longitude": 107.684612,
+            "type": "locality",
+            "name": "Bandung",
+            "number": null,
+            "postal_code": null,
+            "street": null,
+            "confidence": 0.6,
+            "region": "West Java",
+            "region_code": "JR",
+            "county": "Bandung",
+            "locality": "Bandung",
+            "administrative_area": null,
+            "neighbourhood": null,
+            "country": "Indonesia",
+            "country_code": "IDN",
+            "continent": "Asia",
+            "label": "Bandung, JR, Indonesia"
+        },
+        {
+            "latitude": -6.937323,
+            "longitude": 107.655953,
+            "type": "locality",
+            "name": "Bandung",
+            "number": null,
+            "postal_code": null,
+            "street": null,
+            "confidence": 0.6,
+            "region": "West Java",
+            "region_code": "JR",
+            "county": "Bandung",
+            "locality": "Bandung",
+            "administrative_area": null,
+            "neighbourhood": null,
+            "country": "Indonesia",
+            "country_code": "IDN",
+            "continent": "Asia",
+            "label": "Bandung, JR, Indonesia"
+        }
+    ]
+}

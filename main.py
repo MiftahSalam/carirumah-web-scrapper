@@ -22,9 +22,9 @@ if __name__ == '__main__':
     rumah123 = Rumah123Scrapper(DriverType.CHROME,START_URL)
         
     time.sleep(5)
-    rumah123.get_by_location("Jawa Barat")
+    rumah_list = rumah123.get_by_location("Jawa Barat")
     # rumah123.get_recommends()
     # populars = rumah123.get_populars()
-    # rumah123.save_to_file(rumah123.toJson(populars),
+    # rumah123.save_to_file(rumah123.toJson(rumah_list),
     #     str(Path(__file__).resolve().parent),
     #     filename="json_raw.json")

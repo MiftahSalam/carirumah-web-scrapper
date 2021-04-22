@@ -100,6 +100,7 @@ class Rumah123Scrapper(Scrapper):
                     self.get_items(
                         rumah_detail_el, PROPERTY_BY_CSS_SELECTORS, rumah_items)
                     rumah_items.update(self.get_information())
+                    print(rumah_items)
                     
                     if 'agent_contact' not in rumah_items.keys():
                         agent_contact = self.parse_css('div.ui-organism-listing-inquiry-r123__container-wrapper > div > div > button > span.ui-atomic-button--children > div')
@@ -108,12 +109,13 @@ class Rumah123Scrapper(Scrapper):
                         except:
                             print("rumah agent contact not found")
 
+                    # rumah_list.append(rumah_items) #tes
                     items = self.conditioner(rumah_items)
 
                     print("rumah", rumah_items['property_name'])
                     print("posting to database")
                     try:
-                        self.post_data(items,'http://127.0.0.1:8000/api/property/create/','miftah:123456')
+                        # self.post_data(items,'http://127.0.0.1:8000/api/property/create/','miftah:123456')
                         print("success posting to database")
                     except:
                         print("fail posting to database")
@@ -128,6 +130,7 @@ class Rumah123Scrapper(Scrapper):
                 # exit() #debuging
                 break #debugging
                 time.sleep(2)
+        return rumah_list
 
     def get_populars(self):
         current_elements = self.parse_css(POPULAR_CSS)
@@ -185,9 +188,9 @@ class Rumah123Scrapper(Scrapper):
                 property_type = 'apartement'
             new_items['property_type'] = PROPERTY_TYPE[property_type]
         except KeyError:
-            print("conditioner method. Error: Invalid property type")
+            print("Rumah123 -> conditioner method. Error: Invalid property type")
         except:
-            print("conditioner method. Error: Unknown property type error")
+            print("Rumah123 -> conditioner method. Error: Unknown property type error")
 
         try:
             status = new_items['status'].lower()
@@ -199,14 +202,21 @@ class Rumah123Scrapper(Scrapper):
                 status = "-"
             new_items['status'] = STATUS_TYPE[status]
         except KeyError:
-            print("conditioner method. Error: Invalid status type")
+            print("Rumah123 -> conditioner method. Error: Invalid status type")
         except:
-            print("conditioner method. Error: Unknown status type error")
+            print("Rumah123 -> conditioner method. Error: Unknown status type error")
 
-        LB = re.search(r'\d+',new_items['LB']).group()
-        LT = re.search(r'\d+',new_items['LT']).group()
-        new_items['LT'] = LT
-        new_items['LB'] = LB
+        try:
+            LB = re.search(r'\d+',new_items['LB']).group()
+            new_items['LB'] = LB
+        except:
+            print("Rumah123 -> conditioner method. Error: Cannot find LB regexp or no LB item")
+
+        try:
+            LT = re.search(r'\d+',new_items['LT']).group()
+            new_items['LT'] = LT
+        except:
+            print("Rumah123 -> conditioner method. Error: Cannot find LT regexp or no LT item")
 
         new_items['developer'] = {'name': new_items['developer_name'],'contact': new_items['developer_contact']}
         new_items['agent'] = [{'name': new_items['agent_name'],'contact': new_items['agent_contact']}]
@@ -225,10 +235,6 @@ class Rumah123Scrapper(Scrapper):
             del new_items['ID']
         except:
             print('no item ID')
-        try:
-            del new_items['condition']
-        except:
-            print('no item condition')
         try:
             del new_items['condition']
         except:

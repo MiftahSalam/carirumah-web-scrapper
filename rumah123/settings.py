@@ -74,6 +74,9 @@ PROPERTY_BY_CSS_SELECTORS = {
     "price": 'div.r123-o-listing-summary.relative > div:nth-child(2) > div:nth-child(1) > span',
     "LT": 'div.r123-o-listing-summary__detail--area-info > div > div > div > div:nth-child(2) > a > span',
     "LB": 'div.r123-o-listing-summary__detail--area-info > div > div > div > div:nth-child(1) > a > span',
+    "KT": 'div.r123-o-listing-summary__detail--attribute > div > div > div > div:nth-child(1) > a > span.ui-atomic-text.ui-atomic-text--styling-default.ui-atomic-text--typeface-primary.ui-atomic-link--children',
+    "KM": 'div.r123-o-listing-summary__detail--attribute > div > div > div > div:nth-child(2) > a > span.ui-atomic-text.ui-atomic-text--styling-default.ui-atomic-text--typeface-primary.ui-atomic-link--children',
+    "CP": 'div.r123-o-listing-summary__detail--attribute > div > div > div > div:nth-child(3) > a > span.ui-atomic-text.ui-atomic-text--styling-default.ui-atomic-text--typeface-primary.ui-atomic-link--children',
     "status": 'div.r123-o-listing-summary.relative > div:nth-child(1) > p',
     'el_action_open_detail__click': 'div.relative.ui-molecules-list__item.flex.flex-align-center.flex-justify-center', #open detail
     "images__attr__src": 'li[class*="relative ui-organism-gallery__thumbnail-item"] img',

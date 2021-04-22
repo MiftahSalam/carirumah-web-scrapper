@@ -183,7 +183,7 @@ class Scrapper:
     def save_to_file(self,
         content,
         location=str(Path(__file__).resolve().parent),
-        filename=datetime.datetime.now().strftime('%d %m %Y %H %M %S')+".txt",
+        filename=datetime.datetime.now().strftime('%d %m %Y %H %M %S')+".json",
         ):
        
         separator = ''
@@ -193,5 +193,12 @@ class Scrapper:
             separator = "\\"
         
         f = location+separator+filename
-        with open(f,'w') as file:
-            file.write(content)
+        try:
+            with open(f,'w') as file:
+                try:
+                    file.write(content)
+                except:
+                    print("Scrapper -> save_to_file -> error while write file")
+        except:
+            print("Scrapper -> save_to_file -> error while open/create file")
+
